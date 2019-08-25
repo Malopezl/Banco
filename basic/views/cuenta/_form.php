@@ -16,6 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Saldo')->textInput() ?>
 
+    <?= $form->field($model, 'monto')->textInput() ?>
+
+    <?= $form->field($model, 'isolation')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
