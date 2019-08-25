@@ -10,6 +10,8 @@ use Yii;
  * @property int $id
  * @property string $Nombre
  * @property double $Saldo
+ * @property double $monto
+ * @property int $isolation
  */
 class Cuenta extends \yii\db\ActiveRecord
 {
@@ -27,7 +29,8 @@ class Cuenta extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Saldo'], 'number'],
+            [['Saldo', 'monto'], 'number'],
+            [['isolation'], 'integer'],
             [['Nombre'], 'string', 'max' => 45],
         ];
     }
@@ -41,6 +44,8 @@ class Cuenta extends \yii\db\ActiveRecord
             'id' => 'ID',
             'Nombre' => 'Nombre',
             'Saldo' => 'Saldo',
+            'monto' => 'Monto',
+            'isolation' => 'Isolation',
         ];
     }
 }
