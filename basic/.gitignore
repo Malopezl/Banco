@@ -31,30 +31,3 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
-
-basic/assets
-basic/commands
-basic/config
-basic/mail
-basic/runtime
-basic/tests
-basic/vagrant
-basic/vendor
-basic/web
-basic/widgets
-basic/codeception.yml
-basic/composer.json
-basic/composer.lock
-basic/docker-compose.yml
-basic/LICENSE.md
-requirements.php
-basic/Vagrantfile
-basic/yii
-basic/yii.bat
-<<<<<<< HEAD
-basic/.gitignore
-=======
-basic/.
->>>>>>> develop
-basic/.bowerrc
-basic/README.md
