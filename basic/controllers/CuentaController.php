@@ -152,44 +152,47 @@ class CuentaController extends Controller
             'password' => 'ms0664',
         ]);
         $connection->open();
-        if($model->isolation == 0){
-            $transaction = $connection->beginTransaction("SERIALIZABLE");
-            try{
-            $model->Saldo = $model->Saldo - $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
+        if($model->monto <= $model->Saldo){
+            if($model->isolation == 0){
+                $transaction = $connection->beginTransaction("SERIALIZABLE");
+                try{
+                $model->Saldo = $model->Saldo - $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 1){
+                $transaction = $connection->beginTransaction("REPEATABLE READ");
+                try{
+                $model->Saldo = $model->Saldo - $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 2){
+                $transaction = $connection->beginTransaction("READ COMMITTED");
+                try{
+                $model->Saldo = $model->Saldo - $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 3){
+                $transaction = $connection->beginTransaction("READ UNCOMMITTED");
+                try{
+                $model->Saldo = $model->Saldo - $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+                
             }
-        }else if($model->isolation == 1){
-            $transaction = $connection->beginTransaction("REPEATABLE READ");
-            try{
-            $model->Saldo = $model->Saldo - $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-        }else if($model->isolation == 2){
-            $transaction = $connection->beginTransaction("READ COMMITTED");
-            try{
-            $model->Saldo = $model->Saldo - $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-        }else if($model->isolation == 3){
-            $transaction = $connection->beginTransaction("READ UNCOMMITTED");
-            try{
-            $model->Saldo = $model->Saldo - $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-            
         }
+        
         
         $connection->close();
         return $this->redirect(['view', 'id' => $model->id]);
@@ -204,44 +207,46 @@ class CuentaController extends Controller
             'password' => 'ms0664',
         ]);
         $connection->open();
-        if($model->isolation == 0){
-            $transaction = $connection->beginTransaction("SERIALIZABLE");
-            try{
-            $model->Saldo = $model->Saldo + $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
+            if($model->isolation == 0){
+                $transaction = $connection->beginTransaction("SERIALIZABLE");
+                try{
+                $model->Saldo = $model->Saldo + $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 1){
+                $transaction = $connection->beginTransaction("REPEATABLE READ");
+                try{
+                $model->Saldo = $model->Saldo + $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 2){
+                $transaction = $connection->beginTransaction("READ COMMITTED");
+                try{
+                $model->Saldo = $model->Saldo + $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 3){
+                $transaction = $connection->beginTransaction("READ UNCOMMITTED");
+                try{
+                $model->Saldo = $model->Saldo + $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+                
             }
-        }else if($model->isolation == 1){
-            $transaction = $connection->beginTransaction("REPEATABLE READ");
-            try{
-            $model->Saldo = $model->Saldo + $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-        }else if($model->isolation == 2){
-            $transaction = $connection->beginTransaction("READ COMMITTED");
-            try{
-            $model->Saldo = $model->Saldo + $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-        }else if($model->isolation == 3){
-            $transaction = $connection->beginTransaction("READ UNCOMMITTED");
-            try{
-            $model->Saldo = $model->Saldo + $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-            
-        }
+        
+        
         
         $connection->close();
         return $this->redirect(['view', 'id' => $model->id]);
@@ -256,44 +261,48 @@ class CuentaController extends Controller
             'password' => 'ms0664',
         ]);
         $connection->open();
-        if($model->isolation == 0){
-            $transaction = $connection->beginTransaction("SERIALIZABLE");
-            try{
-            $model->Saldo = $model->Saldo - $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
+        if($model->monto <= $model->Saldo){
+            if($model->isolation == 0){
+                $transaction = $connection->beginTransaction("SERIALIZABLE");
+                try{
+                $model->Saldo = $model->Saldo - $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 1){
+                $transaction = $connection->beginTransaction("REPEATABLE READ");
+                try{
+                $model->Saldo = $model->Saldo - $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 2){
+                $transaction = $connection->beginTransaction("READ COMMITTED");
+                try{
+                $model->Saldo = $model->Saldo - $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+            }else if($model->isolation == 3){
+                $transaction = $connection->beginTransaction("READ UNCOMMITTED");
+                try{
+                $model->Saldo = $model->Saldo - $model->monto;
+                $model->save();
+                $transaction->commit();
+                }catch(Exception $e){
+                    $transaction->rollBack();
+                }
+                
             }
-        }else if($model->isolation == 1){
-            $transaction = $connection->beginTransaction("REPEATABLE READ");
-            try{
-            $model->Saldo = $model->Saldo - $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-        }else if($model->isolation == 2){
-            $transaction = $connection->beginTransaction("READ COMMITTED");
-            try{
-            $model->Saldo = $model->Saldo - $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-        }else if($model->isolation == 3){
-            $transaction = $connection->beginTransaction("READ UNCOMMITTED");
-            try{
-            $model->Saldo = $model->Saldo - $model->monto;
-            $model->save();
-            $transaction->commit();
-            }catch(Exception $e){
-                $transaction->rollBack();
-            }
-            
         }
+
+        
         
         $connection->close();
         return $this->redirect(['view', 'id' => $model->id]);
